@@ -23,5 +23,5 @@ We welcome **developers, designers, and content creators** who love the **early 
 1. **Fork the repository**  
 2. Clone it using:  
    ```sh
-   git clone https://github.com/gravenewsweekly/retroweb.space git
+   git clone https://github.com/gravenewsweekly/retroweb.space.git
    cd retroweb.space
