@@ -308,42 +308,79 @@
       <p>&copy; 2025 RetroWeb. All rights reserved.</p>
     </footer>
   </div>
+<script>
+  // Function to share blog post on Instagram
+  function shareOnInstagram(title, imageUrl) {
+    const url = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent(`Check out this blog post: ${title}`);
+    window.open(`https://www.instagram.com/stories/create/?text=${text}&url=${url}`, '_blank');
+  }
 
-  <script>
-    // Function to share blog post on Instagram
-    function shareOnInstagram(title, imageUrl) {
-      const url = encodeURIComponent(window.location.href);
-      const text = encodeURIComponent(`Check out this blog post: ${title}`);
-      const image = encodeURIComponent(imageUrl);
-      window.open(`https://www.instagram.com/create/story?text=${text}&url=${url}&backgroundImage=${image}`, '_blank');
+  // Function to post a comment
+  function postComment(commentId, displayId, countId) {
+    const commentBox = document.getElementById(commentId);
+    const commentText = commentBox.value.trim();
+    
+    if (commentText === "") return;
+
+    const timestamp = new Date().toLocaleString(); // Get current time
+    const commentData = { text: commentText, time: timestamp };
+
+    // Retrieve existing comments from local storage
+    let comments = JSON.parse(localStorage.getItem(displayId)) || [];
+    comments.push(commentData);
+    localStorage.setItem(displayId, JSON.stringify(comments));
+
+    // Update UI
+    displayComments(displayId, countId);
+    commentBox.value = "";
+  }
+
+  // Function to display comments
+  function displayComments(displayId, countId) {
+    const commentContainer = document.getElementById(displayId);
+    commentContainer.innerHTML = ""; // Clear existing comments
+    let comments = JSON.parse(localStorage.getItem(displayId)) || [];
+
+    comments.forEach(comment => {
+      const commentDiv = document.createElement("div");
+      commentDiv.classList.add("comment-box");
+      commentDiv.innerHTML = `<strong>Anonymous</strong>: ${comment.text} <br><small>${comment.time}</small>`;
+
+      // Delete button for user to remove their comment
+      const deleteBtn = document.createElement("button");
+      deleteBtn.innerText = "Delete";
+      deleteBtn.onclick = function () {
+        deleteComment(displayId, countId, comment);
+      };
+      commentDiv.appendChild(deleteBtn);
+
+      commentContainer.appendChild(commentDiv);
+    });
+
+    // Update comment count
+    document.getElementById(countId).textContent = comments.length;
+  }
+
+  // Function to delete a comment
+  function deleteComment(displayId, countId, commentToDelete) {
+    let comments = JSON.parse(localStorage.getItem(displayId)) || [];
+    comments = comments.filter(comment => comment.text !== commentToDelete.text || comment.time !== commentToDelete.time);
+    localStorage.setItem(displayId, JSON.stringify(comments));
+
+    // Refresh displayed comments
+    displayComments(displayId, countId);
+  }
+
+  // Load comments on page load
+  window.onload = function () {
+    for (let i = 1; i <= 5; i++) {
+      const displayId = `comments${i}`;
+      const countId = `count${i}`;
+      displayComments(displayId, countId);
     }
-
-    // Function to post a comment
-    function postComment(commentId, countId) {
-      const comment = document.getElementById(commentId).value;
-      if (comment.trim() === "") return;
-
-      // Save comment in local storage
-      let comments = JSON.parse(localStorage.getItem(countId)) || [];
-      comments.push(comment);
-      localStorage.setItem(countId, JSON.stringify(comments));
-
-      // Update comment count
-      document.getElementById(countId).textContent = comments.length;
-
-      // Clear comment box
-      document.getElementById(commentId).value = "";
-      document.getElementById(commentId).style.display = "none";
-    }
-
-    // Load comment counts from local storage on page load
-    window.onload = function () {
-      for (let i = 1; i <= 5; i++) {
-        const countId = `count${i}`;
-        const comments = JSON.parse(localStorage.getItem(countId)) || [];
-        document.getElementById(countId).textContent = comments.length;
-      }
-    };
-  </script>
+  };
+</script>
+  
 </body>
 </html>
