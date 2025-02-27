@@ -99,8 +99,64 @@
       font-size: 12px;
       color: #666;
     }
+
+    /* Donate Button Styling */
+    #donate-button {
+      background-color: #3399cc;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    #donate-button:hover {
+      background-color: #2a7ba5;
+    }
+
+    /* Media Queries for Mobile Responsiveness */
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+
+      .container {
+        padding: 15px;
+      }
+
+      header h1 {
+        font-size: 20px;
+      }
+
+      header p {
+        font-size: 12px;
+      }
+
+      nav ul li a {
+        font-size: 14px;
+      }
+
+      .content h2 {
+        font-size: 16px;
+      }
+
+      .content p {
+        font-size: 12px;
+      }
+
+      #donate-button {
+        font-size: 14px;
+        padding: 8px 16px;
+      }
+
+      footer {
+        font-size: 10px;
+      }
+    }
   </style>
-  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </head>
 <body>
   <div class="container">
@@ -114,15 +170,14 @@
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="donate.html">Donate</a></li>
       </ul>
     </nav>
 
     <!-- Content -->
     <div class="content">
       <h2>Support RetroWeb</h2>
-      <p>Your donation helps us keep RetroWeb alive and running. Thank you for your support!</p>
-      <button id="donate-button">Donate Now</button>
+      <p>Your donation helps us keep RetroWeb alive and running. Thank you for your time and support! we ensure free articles for our users and with good knowledge</p>
+      <a id="donate-button" href="https://razorpay.me/@dakshhande" target="_blank">Donate Now</a>
     </div>
 
     <!-- Footer -->
@@ -130,35 +185,5 @@
       <p>&copy; 2025 RetroWeb. All rights reserved.</p>
     </footer>
   </div>
-
-  <script>
-    document.getElementById('donate-button').onclick = function(e){
-      var options = {
-        "key": "YOUR_RAZORPAY_KEY", // Replace with your Razorpay Key
-        "amount": "500", // Amount is in currency subunits. Default currency is INR. Hence, 500 refers to 500 paise or ₹5.00.
-        "currency": "INR",
-        "name": "RetroWeb",
-        "description": "Donation for RetroWeb",
-        "image": "https://example.com/your_logo.png", // Replace with your logo
-        "handler": function (response){
-          alert(response.razorpay_payment_id);
-        },
-        "prefill": {
-          "name": "Your Name",
-          "email": "your.email@example.com",
-          "contact": "9999999999"
-        },
-        "notes": {
-          "address": "RetroWeb Headquarters"
-        },
-        "theme": {
-          "color": "#3399cc"
-        }
-      };
-      var rzp1 = new Razorpay(options);
-      rzp1.open();
-      e.preventDefault();
-    }
-  </script>
 </body>
 </html>
