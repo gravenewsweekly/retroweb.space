@@ -59,6 +59,7 @@
 
     nav ul {
       list-style: none;
+      padding: 0;
     }
 
     nav ul li {
@@ -116,6 +117,34 @@
       font-size: 12px;
       color: #666;
     }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 480px) {
+      nav ul li {
+        display: block;
+        margin: 10px 0;
+      }
+
+      .container {
+        padding: 15px;
+      }
+
+      header h1 {
+        font-size: 22px;
+      }
+
+      header p {
+        font-size: 13px;
+      }
+
+      .content h2 {
+        font-size: 16px;
+      }
+
+      .content p {
+        font-size: 13px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -168,6 +197,11 @@
         Whether you're here to explore archived content, contribute your own work, or simply reminisce about the good old days, 
         RetroWeb is the place for you. Join us in preserving the history and spirit of the early web!
       </p>
+      <p>
+        New updates include a more mobile-friendly design, ensuring you can enjoy RetroWeb on any device. Dive into our 
+        <a href="donate.html">Donate</a> or learn our refund policy<a href="refund.html">Refund</a> to our growing 
+        collection of retro content.
+      </p>
     </div>
 
     <!-- Footer -->
@@ -175,17 +209,5 @@
       <p>&copy; 2025 RetroWeb. All rights reserved.</p>
     </footer>
   </div>
-
-  <!-- Ad Script -->
-  <script type="text/javascript">
-    atOptions = {
-      'key' : '8ddd9c8d2ea20d7154eba6c2f2c95c35',
-      'format' : 'iframe',
-      'height' : 600,
-      'width' : 160,
-      'params' : {}
-    };
-  </script>
-  <script type="text/javascript" src="//www.highperformanceformat.com/8ddd9c8d2ea20d7154eba6c2f2c95c35/invoke.js"></script>
 </body>
 </html>
