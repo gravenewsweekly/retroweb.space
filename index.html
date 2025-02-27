@@ -149,9 +149,59 @@
         font-size: 13px;
       }
     }
+
+    /* Modal Styling */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .modal-content button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .modal-content button:hover {
+      background-color: #000;
+    }
   </style>
 </head>
 <body>
+  <!-- Modal -->
+  <div class="modal" id="mobileModal">
+    <div class="modal-content">
+      <p>It looks like you're using a mobile device on Chrome. For a better viewing experience, please follow these steps:</p>
+      <ol>
+        <li>Tap the three dots in the top-right corner of your browser.</li>
+        <li>Select "Settings".</li>
+        <li>Tap "Desktop site" to enable desktop mode.</li>
+      </ol>
+      <p>Sorry for any inconvenience!</p>
+      <button id="closeModal">Close</button>
+    </div>
+  </div>
+
   <div class="container">
     <!-- Header -->
     <header>
@@ -213,5 +263,32 @@
       <p>&copy; 2025 RetroWeb. All rights reserved.</p>
     </footer>
   </div>
+
+  <script>
+    // Function to check if the user is on a mobile Chrome browser
+    function isMobileChrome() {
+      return /Android.*Chrome\/[.0-9]* Mobile/.test(navigator.userAgent);
+    }
+
+    // Function to show the modal if it hasn't been shown before
+    function showMobileModal() {
+      const modal = document.getElementById('mobileModal');
+      const closeButton = document.getElementById('closeModal');
+
+      // Check if the modal has been shown before
+      if (!localStorage.getItem('modalShown') && isMobileChrome()) {
+        modal.style.display = 'flex';
+        localStorage.setItem('modalShown', 'true');
+      }
+
+      // Close the modal when the button is clicked
+      closeButton.addEventListener('click', () => {
+        modal.style.display = 'none';
+      });
+    }
+
+    // Run the function when the page loads
+    window.onload = showMobileModal;
+  </script>
 </body>
 </html>
