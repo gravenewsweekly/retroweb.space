@@ -114,6 +114,22 @@
       color: #000;
     }
 
+    /* Flag Button Styling */
+    .flag-button {
+      background-color: #ff4444;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 12px;
+      margin-top: 10px;
+    }
+
+    .flag-button:hover {
+      background-color: #cc0000;
+    }
+
     /* Footer Styling */
     footer {
       text-align: center;
@@ -185,10 +201,20 @@
     .modal-content button:hover {
       background-color: #000;
     }
+
+    /* Flag Modal Styling */
+    #flagModal textarea {
+      width: 100%;
+      height: 100px;
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
   </style>
 </head>
 <body>
-  <!-- Modal -->
+  <!-- Mobile Modal -->
   <div class="modal" id="mobileModal">
     <div class="modal-content">
       <p>It looks like you're using a mobile device on Chrome. For a better viewing experience, please follow these steps:</p>
@@ -199,6 +225,17 @@
       </ol>
       <p>Sorry for any inconvenience!</p>
       <button id="closeModal">Close</button>
+    </div>
+  </div>
+
+  <!-- Flag Modal -->
+  <div class="modal" id="flagModal">
+    <div class="modal-content">
+      <h2>Flag Content</h2>
+      <p>Please provide a reason for flagging this content:</p>
+      <textarea id="flagReason" placeholder="Enter reason..."></textarea>
+      <button id="submitFlag">Submit</button>
+      <button id="cancelFlag">Cancel</button>
     </div>
   </div>
 
@@ -261,6 +298,8 @@
         <a href="donate.html">Donate</a> or learn our refund policy <a href="refund.html">Refund</a> to our growing 
         collection of retro content.
       </p>
+      <!-- Flag Button -->
+      <button class="flag-button" id="flagContent">Flag Content</button>
     </div>
 
     <!-- Footer -->
@@ -275,7 +314,7 @@
       return /Android.*Chrome\/[.0-9]* Mobile/.test(navigator.userAgent);
     }
 
-    // Function to show the modal if it hasn't been shown before
+    // Function to show the mobile modal if it hasn't been shown before
     function showMobileModal() {
       const modal = document.getElementById('mobileModal');
       const closeButton = document.getElementById('closeModal');
@@ -292,8 +331,45 @@
       });
     }
 
-    // Run the function when the page loads
-    window.onload = showMobileModal;
+    // Function to handle flagging content
+    function setupFlagging() {
+      const flagButton = document.getElementById('flagContent');
+      const flagModal = document.getElementById('flagModal');
+      const submitFlag = document.getElementById('submitFlag');
+      const cancelFlag = document.getElementById('cancelFlag');
+      const flagReason = document.getElementById('flagReason');
+
+      // Open flag modal
+      flagButton.addEventListener('click', () => {
+        flagModal.style.display = 'flex';
+      });
+
+      // Submit flag
+      submitFlag.addEventListener('click', () => {
+        const reason = flagReason.value.trim();
+        if (reason) {
+          alert('Thank you for flagging this content. Our moderators will review it shortly.');
+          // Simulate sending data to the server
+          console.log('Flagged Reason:', reason);
+          flagModal.style.display = 'none';
+          flagReason.value = '';
+        } else {
+          alert('Please provide a reason for flagging.');
+        }
+      });
+
+      // Cancel flag
+      cancelFlag.addEventListener('click', () => {
+        flagModal.style.display = 'none';
+        flagReason.value = '';
+      });
+    }
+
+    // Run functions when the page loads
+    window.onload = () => {
+      showMobileModal();
+      setupFlagging();
+    };
   </script>
 </body>
 </html>
