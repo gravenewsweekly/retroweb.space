@@ -8,6 +8,9 @@
   <!-- Google Site Verification -->
   <meta name="google-site-verification" content="92a928c2dda2072a" />
 
+  <!-- Ad Script -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3374094668583038" crossorigin="anonymous"></script>
+
   <style>
     /* General Reset */
     body, h1, h2, p, ul, li {
@@ -81,6 +84,34 @@
       text-decoration: underline;
     }
 
+    /* Search Bar Styling */
+    .search-bar {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .search-bar input {
+      width: 80%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    .search-bar button {
+      padding: 10px 20px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .search-bar button:hover {
+      background-color: #000;
+    }
+
     /* Content Styling */
     .content {
       font-size: 14px;
@@ -112,22 +143,6 @@
 
     .content a:hover {
       color: #000;
-    }
-
-    /* Flag Button Styling */
-    .flag-button {
-      background-color: #ff4444;
-      color: white;
-      border: none;
-      padding: 5px 10px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 12px;
-      margin-top: 10px;
-    }
-
-    .flag-button:hover {
-      background-color: #cc0000;
     }
 
     /* Footer Styling */
@@ -163,6 +178,10 @@
 
       .content p {
         font-size: 13px;
+      }
+
+      .search-bar input {
+        width: 100%;
       }
     }
 
@@ -201,16 +220,6 @@
     .modal-content button:hover {
       background-color: #000;
     }
-
-    /* Flag Modal Styling */
-    #flagModal textarea {
-      width: 100%;
-      height: 100px;
-      margin-top: 10px;
-      padding: 10px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
   </style>
 </head>
 <body>
@@ -228,17 +237,6 @@
     </div>
   </div>
 
-  <!-- Flag Modal -->
-  <div class="modal" id="flagModal">
-    <div class="modal-content">
-      <h2>Flag Content</h2>
-      <p>Please provide a reason for flagging this content:</p>
-      <textarea id="flagReason" placeholder="Enter reason..."></textarea>
-      <button id="submitFlag">Submit</button>
-      <button id="cancelFlag">Cancel</button>
-    </div>
-  </div>
-
   <!-- Stats Tracking Code -->
   <div id="sfcjtk3mr5phnaldqmcm1wyf91t3qxs93g5"></div>
   <script type="text/javascript" src="https://counter6.optistats.ovh/private/counter.js?c=jtk3mr5phnaldqmcm1wyf91t3qxs93g5&down=async" async></script>
@@ -250,6 +248,12 @@
       <h1>RetroWeb</h1>
       <p>Your Gateway to the Early 2000s Internet</p>
     </header>
+
+    <!-- Search Bar -->
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search pages...">
+      <button id="searchButton">Search</button>
+    </div>
 
     <!-- Navigation -->
     <nav>
@@ -268,17 +272,6 @@
         <li><a href="refund.html">Refund Policy</a></li>
         <li><a href="shipping.html">Shipping Policy</a></li>
       </ul>
-      <!-- Ad Script -->
-      <script type="text/javascript">
-        atOptions = {
-          'key' : '8cb3c3069bb62b2c2b931f9a59972da7',
-          'format' : 'iframe',
-          'height' : 60,
-          'width' : 468,
-          'params' : {}
-        };
-      </script>
-      <script type="text/javascript" src="//www.highperformanceformat.com/8cb3c3069bb62b2c2b931f9a59972da7/invoke.js"></script>
     </nav>
 
     <!-- Content -->
@@ -298,8 +291,6 @@
         <a href="donate.html">Donate</a> or learn our refund policy <a href="refund.html">Refund</a> to our growing 
         collection of retro content.
       </p>
-      <!-- Flag Button -->
-      <button class="flag-button" id="flagContent">Flag Content</button>
     </div>
 
     <!-- Footer -->
@@ -331,44 +322,60 @@
       });
     }
 
-    // Function to handle flagging content
-    function setupFlagging() {
-      const flagButton = document.getElementById('flagContent');
-      const flagModal = document.getElementById('flagModal');
-      const submitFlag = document.getElementById('submitFlag');
-      const cancelFlag = document.getElementById('cancelFlag');
-      const flagReason = document.getElementById('flagReason');
+    // Function to handle search functionality
+    function setupSearch() {
+      const searchInput = document.getElementById('searchInput');
+      const searchButton = document.getElementById('searchButton');
 
-      // Open flag modal
-      flagButton.addEventListener('click', () => {
-        flagModal.style.display = 'flex';
+      searchButton.addEventListener('click', () => {
+        const query = searchInput.value.trim().toLowerCase();
+        if (query) {
+          const pages = [
+            'index.html', 'about.html', 'contact.html', 'faq.html', 'archive.html', 
+            'contribute.html', 'terms.html', 'privacy.html', 'legal.html', 'ads.html', 
+            'donate.html', 'refund.html', 'shipping.html'
+          ];
+
+          const foundPage = pages.find(page => page.toLowerCase().includes(query));
+          if (foundPage) {
+            window.location.href = foundPage;
+          } else {
+            alert('No matching page found.');
+          }
+        } else {
+          alert('Please enter a search term.');
+        }
+      });
+    }
+
+    // Basic Anti-Hacking System
+    function setupAntiHacking() {
+      // Prevent right-click (context menu)
+      document.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+        alert('Right-click is disabled for security reasons.');
       });
 
-      // Submit flag
-      submitFlag.addEventListener('click', () => {
-        const reason = flagReason.value.trim();
-        if (reason) {
-          alert('Thank you for flagging this content. Our moderators will review it shortly.');
-          // Simulate sending data to the server
-          console.log('Flagged Reason:', reason);
-          flagModal.style.display = 'none';
-          flagReason.value = '';
-        } else {
-          alert('Please provide a reason for flagging.');
+      // Prevent F12 (developer tools)
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
+          e.preventDefault();
+          alert('Developer tools are disabled for security reasons.');
         }
       });
 
-      // Cancel flag
-      cancelFlag.addEventListener('click', () => {
-        flagModal.style.display = 'none';
-        flagReason.value = '';
+      // Prevent copying content
+      document.addEventListener('copy', (e) => {
+        e.preventDefault();
+        alert('Copying content is disabled for security reasons.');
       });
     }
 
     // Run functions when the page loads
     window.onload = () => {
       showMobileModal();
-      setupFlagging();
+      setupSearch();
+      setupAntiHacking();
     };
   </script>
 </body>
