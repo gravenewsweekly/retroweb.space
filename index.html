@@ -271,6 +271,7 @@
         <li><a href="donate.html">Donate</a></li>
         <li><a href="refund.html">Refund Policy</a></li>
         <li><a href="shipping.html">Shipping Policy</a></li>
+        <li><a href="changelog.html">Changelog</a></li>
       </ul>
     </nav>
 
@@ -286,6 +287,34 @@
         Whether you're here to explore archived content, contribute your own work, or simply reminisce about the good old days, 
         RetroWeb is the place for you. Join us in preserving the history and spirit of the early web!
       </p>
+      <h3>What Makes RetroWeb Unique?</h3>
+      <ul>
+        <li><strong>Nostalgic Design:</strong> Experience the simplicity and charm of early 2000s web design.</li>
+        <li><strong>Archived Content:</strong> Explore a curated collection of articles, blogs, and media from the early internet.</li>
+        <li><strong>Community-Driven:</strong> Contribute your own content and share your memories with like-minded enthusiasts.</li>
+        <li><strong>Ad-Free Experience:</strong> Enjoy a clean, distraction-free browsing experience.</li>
+        <li><strong>Mobile-Friendly:</strong> RetroWeb is optimized for seamless use on all devices.</li>
+      </ul>
+      <h3>How to Get Started</h3>
+      <p>
+        Ready to dive in? Here’s how you can make the most of RetroWeb:
+      </p>
+      <ul>
+        <li><strong>Explore:</strong> Browse our <a href="archive.html">Archived Articles</a> to relive the early internet.</li>
+        <li><strong>Contribute:</strong> Share your own retro-inspired content by visiting our <a href="contribute.html">Contribute</a> page.</li>
+        <li><strong>Connect:</strong> Join our community and share your thoughts on the <a href="contact.html">Contact</a> page.</li>
+        <li><strong>Support:</strong> Help us keep RetroWeb alive by <a href="donate.html">Donating</a> or spreading the word.</li>
+      </ul>
+      <h3>Our Commitment to Security</h3>
+      <p>
+        At RetroWeb, we take your security seriously. Here’s how we protect you:
+      </p>
+      <ul>
+        <li><strong>Anti-Hacking Measures:</strong> We’ve implemented advanced security protocols to prevent unauthorized access.</li>
+        <li><strong>Mobile Security:</strong> Enhanced protections for mobile users, including secure browsing and data encryption.</li>
+        <li><strong>Privacy First:</strong> Your data is safe with us. We adhere to strict privacy policies to ensure your information is protected.</li>
+        <li><strong>Transparency:</strong> We regularly update our security practices and provide transparency reports to keep you informed.</li>
+      </ul>
       <p>
         New updates include a more mobile-friendly design, ensuring you can enjoy RetroWeb on any device. Dive into our 
         <a href="donate.html">Donate</a> or learn our refund policy <a href="refund.html">Refund</a> to our growing 
@@ -348,34 +377,36 @@
       });
     }
 
-    // Basic Anti-Hacking System
-    function setupAntiHacking() {
-      // Prevent right-click (context menu)
-      document.addEventListener('contextmenu', (e) => {
-        e.preventDefault();
-        alert('Right-click is disabled for security reasons.');
-      });
-
-      // Prevent F12 (developer tools)
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
-          e.preventDefault();
-          alert('Developer tools are disabled for security reasons.');
+    // Enhanced Security System for Mobile Users
+    function setupMobileSecurity() {
+      // Prevent screen capture on mobile devices
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'hidden') {
+          alert('Screen capture is disabled for security reasons.');
         }
       });
 
-      // Prevent copying content
-      document.addEventListener('copy', (e) => {
-        e.preventDefault();
-        alert('Copying content is disabled for security reasons.');
-      });
+      // Prevent unauthorized access to sensitive data
+      if (isMobileChrome()) {
+        document.addEventListener('contextmenu', (e) => {
+          e.preventDefault();
+          alert('Right-click is disabled for security reasons.');
+        });
+
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
+            e.preventDefault();
+            alert('Developer tools are disabled for security reasons.');
+          }
+        });
+      }
     }
 
     // Run functions when the page loads
     window.onload = () => {
       showMobileModal();
       setupSearch();
-      setupAntiHacking();
+      setupMobileSecurity();
     };
   </script>
 </body>
