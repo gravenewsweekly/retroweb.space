@@ -315,6 +315,16 @@
         <li><strong>Privacy First:</strong> Your data is safe with us. We adhere to strict privacy policies to ensure your information is protected.</li>
         <li><strong>Transparency:</strong> We regularly update our security practices and provide transparency reports to keep you informed.</li>
       </ul>
+      <h3>Why RetroWeb?</h3>
+      <p>
+        RetroWeb is more than just a website; it’s a journey back in time. Here’s why you’ll love it:
+      </p>
+      <ul>
+        <li><strong>Relive the Past:</strong> Rediscover the simplicity and creativity of the early internet.</li>
+        <li><strong>Learn and Share:</strong> Contribute your own stories and learn from others in the community.</li>
+        <li><strong>Stay Connected:</strong> Join a community of like-minded individuals who share your passion for retro tech and culture.</li>
+        <li><strong>Support a Cause:</strong> By using RetroWeb, you’re helping preserve the history of the internet for future generations.</li>
+      </ul>
       <p>
         New updates include a more mobile-friendly design, ensuring you can enjoy RetroWeb on any device. Dive into our 
         <a href="donate.html">Donate</a> or learn our refund policy <a href="refund.html">Refund</a> to our growing 
@@ -362,7 +372,7 @@
           const pages = [
             'index.html', 'about.html', 'contact.html', 'faq.html', 'archive.html', 
             'contribute.html', 'terms.html', 'privacy.html', 'legal.html', 'ads.html', 
-            'donate.html', 'refund.html', 'shipping.html'
+            'donate.html', 'refund.html', 'shipping.html', 'changelog.html'
           ];
 
           const foundPage = pages.find(page => page.toLowerCase().includes(query));
@@ -377,36 +387,10 @@
       });
     }
 
-    // Enhanced Security System for Mobile Users
-    function setupMobileSecurity() {
-      // Prevent screen capture on mobile devices
-      document.addEventListener('visibilitychange', () => {
-        if (document.visibilityState === 'hidden') {
-          alert('Screen capture is disabled for security reasons.');
-        }
-      });
-
-      // Prevent unauthorized access to sensitive data
-      if (isMobileChrome()) {
-        document.addEventListener('contextmenu', (e) => {
-          e.preventDefault();
-          alert('Right-click is disabled for security reasons.');
-        });
-
-        document.addEventListener('keydown', (e) => {
-          if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
-            e.preventDefault();
-            alert('Developer tools are disabled for security reasons.');
-          }
-        });
-      }
-    }
-
     // Run functions when the page loads
     window.onload = () => {
       showMobileModal();
       setupSearch();
-      setupMobileSecurity();
     };
   </script>
 </body>
