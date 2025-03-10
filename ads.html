@@ -23,9 +23,9 @@
       padding: 20px;
     }
 
-    /* Square Container */
+    /* Responsive Container */
     .container {
-      width: 100%;
+      width: 90%;
       max-width: 600px;
       background-color: #fff;
       border: 1px solid #ccc;
@@ -116,6 +116,21 @@
       font-size: 12px;
       color: #666;
     }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+      .container {
+        width: 100%;
+        padding: 15px;
+      }
+      nav ul li {
+        display: block;
+        margin-bottom: 10px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -137,74 +152,34 @@
     <div class="content">
       <h2>Ads Policy</h2>
       <p>
-        At RetroWeb, we are committed to providing a clean, user-friendly, and distraction-free browsing experience. This Ads Policy outlines our approach to advertising, ensuring that all displayed ads align with our core values of transparency, quality, and user privacy. Our goal is to strike a balance between delivering relevant advertisements and maintaining an enjoyable experience for our visitors.
+        At RetroWeb, we are committed to providing a clean, user-friendly, and distraction-free browsing experience. This Ads Policy outlines our approach to advertising, ensuring that all displayed ads align with our core values of transparency, quality, and user privacy.
       </p>
       <h3>Our Advertising Principles</h3>
       <ul>
-        <li>
-          <strong>Relevance:</strong> We carefully select advertisements that align with our users' interests and browsing preferences. Ads are tailored to enhance rather than disrupt the user experience.
-        </li>
-        <li>
-          <strong>Transparency:</strong> All advertisements are clearly labeled as <em>"Sponsored"</em> or <em>"Advertisement"</em> to distinguish them from our organic content. We do not engage in deceptive advertising practices.
-        </li>
-        <li>
-          <strong>Quality:</strong> We maintain high standards for the ads displayed on RetroWeb. Advertisements must be professional, non-intrusive, and free from misleading, offensive, or inappropriate content.
-        </li>
-        <li>
-          <strong>Privacy & Data Protection:</strong> We take user privacy seriously. RetroWeb does not share personal data with advertisers without explicit user consent. All advertisements comply with our strict privacy guidelines and adhere to data protection laws.
-        </li>
-        <li>
-          <strong>Ad Frequency & Placement:</strong> Ads are displayed in moderation to prevent an overwhelming or disruptive experience. We ensure that advertisements do not interfere with the readability of our content.
-        </li>
-        <li>
-          <strong>Third-Party Advertising:</strong> We collaborate with trusted and reputable third-party ad networks to serve relevant and secure advertisements. Our partners are carefully vetted to maintain the integrity of our platform.
-        </li>
-        <li>
-          <strong>User Control & Feedback:</strong> Users have control over their ad preferences. They can opt out of personalized advertising through their account settings or provide feedback on ads they find intrusive or irrelevant.
-        </li>
-        <li>
-          <strong>Legal Compliance:</strong> We adhere to all applicable advertising regulations, including consumer protection laws and data privacy policies, to ensure ethical and responsible ad placement.
-        </li>
-        <li>
-          <strong>Selective Ad Networks:</strong> RetroWeb earns revenue exclusively through ads, but we partner only with highly selective and reputable ad networks that align with our values.
-        </li>
-        <li>
-          <strong>No Pop-Ups or Intrusive Ads:</strong> We do not allow pop-ups, auto-playing videos, or other intrusive ad formats that disrupt the user experience.
-        </li>
-        <li>
-          <strong>Ad Content Review:</strong> All ads undergo a rigorous review process to ensure they meet our quality and relevance standards.
-        </li>
-        <li>
-          <strong>User-Centric Approach:</strong> Ads are designed to complement the user experience, not detract from it. We prioritize user satisfaction over ad revenue.
-        </li>
-        <li>
-          <strong>No Data Selling:</strong> RetroWeb does not sell user data to advertisers. Any data used for ad targeting is anonymized and handled with care.
-        </li>
-        <li>
-          <strong>Ad Blocking Compatibility:</strong> We respect users' choice to use ad blockers and ensure our site remains functional even with ad-blocking software enabled.
-        </li>
-        <li>
-          <strong>Ad-Free Subscription Option:</strong> In the future, we plan to offer an ad-free subscription option for users who prefer an entirely ad-free experience.
-        </li>
-        <li>
-          <strong>Feedback-Driven Improvements:</strong> We actively seek user feedback to improve our ad policies and ensure they align with user expectations.
-        </li>
-        <li>
-          <strong>Ethical Advertising:</strong> We do not allow ads for products or services that are harmful, unethical, or illegal.
-        </li>
-        <li>
-          <strong>Ad Performance Monitoring:</strong> We continuously monitor ad performance to ensure they remain relevant and non-intrusive.
-        </li>
-        <li>
-          <strong>Transparency Reports:</strong> We publish periodic transparency reports detailing our ad practices and revenue sources.
-        </li>
-        <li>
-          <strong>Community Trust:</strong> Building and maintaining trust with our community is our top priority. We ensure our ad practices reflect this commitment.
-        </li>
+        <li><strong>Relevance:</strong> We carefully select advertisements that align with our users' interests.</li>
+        <li><strong>Transparency:</strong> Ads are clearly labeled as <em>"Sponsored"</em> or <em>"Advertisement"</em>.</li>
+        <li><strong>Quality:</strong> Ads must be professional, non-intrusive, and free from misleading content.</li>
+        <li><strong>Privacy & Data Protection:</strong> We do not share personal data with advertisers without user consent.</li>
+        <li><strong>Ad Frequency & Placement:</strong> Ads are displayed in moderation to maintain readability.</li>
+        <li><strong>Third-Party Advertising:</strong> We collaborate only with trusted third-party ad networks.</li>
+        <li><strong>User Control & Feedback:</strong> Users can opt out of personalized advertising.</li>
+        <li><strong>Legal Compliance:</strong> We adhere to all applicable advertising regulations.</li>
+        <li><strong>No Pop-Ups or Intrusive Ads:</strong> We do not allow disruptive ad formats.</li>
+        <li><strong>Selective Ad Networks:</strong> We partner only with reputable ad networks.</li>
+        <li><strong>Ad-Free Subscription Option:</strong> A future ad-free subscription is planned.</li>
+        <li><strong>Ethical Advertising:</strong> Ads for harmful or illegal services are prohibited.</li>
+        <li><strong>Ad Performance Monitoring:</strong> We continuously monitor ad effectiveness.</li>
+        <li><strong>No Data Selling:</strong> RetroWeb does not sell user data to advertisers.</li>
+        <li><strong>Transparency Reports:</strong> We periodically publish ad transparency reports.</li>
+
+        <!-- Additional 5 Points -->
+        <li><strong>No Flash Ads:</strong> We do not allow outdated Flash-based advertisements.</li>
+        <li><strong>Load Time Optimization:</strong> Ads are optimized for fast loading speeds.</li>
+        <li><strong>Advertiser Accountability:</strong> We hold advertisers accountable for misleading claims.</li>
+        <li><strong>Strict Content Review:</strong> Ads undergo multiple quality checks before approval.</li>
+        <li><strong>Ads Aligned with Content:</strong> We ensure ads match the theme and tone of our platform.</li>
       </ul>
-      <p>
-        Our commitment to an ad-friendly yet user-centric approach ensures that advertisements on RetroWeb remain relevant, respectful, and non-intrusive. If you have any questions or concerns about our advertising policy, please feel free to reach out to us.
-      </p>
+      
       <p>
         If you have any questions or concerns about our Ads Policy, please contact us at <strong>Email Address:</strong> <a href="mailto:info@retroweb.space">info@retroweb.space</a>.
       </p>
@@ -215,5 +190,12 @@
       <p>&copy; 2025 RetroWeb. All rights reserved.</p>
     </footer>
   </div>
+
+  <!-- Ad Snippet -->
+  <script type="text/javascript" data-cfasync="false">
+  /*<![CDATA[/* */
+  (function(){var w=window,u="e176dddcd9f91fcfe1780bc4b86bbaf2",q=[["siteId",186*778+199+5037000],["minBid",0],["popundersPerIP","0"],["delayBetween",0],["default",false],["defaultPerDay",0],["topmostLayer","auto"]],v=["d3d3LmRpc3BsYXl2ZXJ0aXNpbmcuY29tL3Jtbi9zZXF1YWxpemUubWluLmpz","ZDNtem9rdHk5NTFjNXcuY2xvdWRmcm9udC5uZXQvVy9QL25qcXVlcnkuZmlsZXVwbG9hZC5taW4uY3Nz"],l=-1,h,c,x=function(){clearTimeout(c);l++;if(v[l]&&!(1767463630000<(new Date).getTime()&&1<l)){h=w.document.createElement("script");h.type="text/javascript";h.async=!0;var p=w.document.getElementsByTagName("script")[0];h.src="https://"+atob(v[l]);h.crossOrigin="anonymous";h.onerror=x;h.onload=function(){clearTimeout(c);w[u.slice(0,16)+u.slice(0,16)]||x()};c=setTimeout(x,5E3);p.parentNode.insertBefore(h,p)}};if(!w[u]){try{Object.freeze(w[u]=q)}catch(e){}x()}})();
+  /*]]>/* */
+  </script>
 </body>
 </html>
